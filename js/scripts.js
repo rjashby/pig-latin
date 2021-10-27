@@ -22,6 +22,9 @@ function findFirstVowelIndex(word) {
 }
 
 function pigLatin(word) {
+  if (word === "") {
+    return "";
+  }
   if (isCharVowel(word[0])) {
     word = word.concat("way");
   } else if (word[0].toLowerCase() === "q") {
