@@ -21,6 +21,9 @@ function findFirstVowelIndex(word) {
 function pigLatin(word) {
   if (isCharVowel(word[0])) {
     word = word.concat("way");
+  } else if (word[0].toLowerCase() === "q") {
+      const wordRemainder = word.slice(2, word.length);
+      word = wordRemainder.concat("quay");
   } else {
     const firstVowelIndex = findFirstVowelIndex(word);
     if (firstVowelIndex !== -1) {
@@ -33,3 +36,10 @@ function pigLatin(word) {
   }
   return word;
 }
+
+const qCondition = "qu"
+Constant wordRemainder = word[2], word.length 
+Index of the word
+if word.splice[1] === qCondition
+  word = wordRemainder + qCondition + "ay"
+ 
