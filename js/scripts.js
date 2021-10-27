@@ -1,13 +1,26 @@
-function pigLatin(word) {
+function isCharVowel(char) {
   const vowels = ["a", "e", "i", "o", "u"];
-  let firstCharIsVowel = false;
-  let sliceWord = ("");
-  vowels.forEach(function(vowel) {
-    if (word.charAt(0) === vowel) {
-      firstCharIsVowel = true;
+  for (let i = 0; i < vowels.length; i++) {
+    if (char === vowels[i]) {
+      return true;
     }
-  });
-  if (firstCharIsVowel) {
+  }
+  return false;
+}
+
+function findFirstVowelIndex(word) {
+  const wordArray = word.split("");
+  for (let i = 0; i < wordArray.length; i++) {
+    if (isCharVowel(wordArray[i])) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function pigLatin(word) {
+  let sliceWord = ("");  
+  if (isCharVowel(word[0])) {
     word = word.concat("way");
   } else {
     sliceWord = word.slice(1);
@@ -16,3 +29,14 @@ function pigLatin(word) {
   return word;
 }
 
+brat
+
+br at
+
+b r a t
+0 1 2 3
+
+find index of first vowel
+strStartingWithVowel = str.slice(i)
+strConsonants = str.slice(0, i - 1)
+word = strVowel.concat(strConson + "ay")
