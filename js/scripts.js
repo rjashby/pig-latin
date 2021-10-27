@@ -21,8 +21,14 @@ function findFirstVowelIndex(word) {
   return -1;
 }
 
-isCharPunc(char) {
-
+function isCharPunc(char) {
+  const punctuation = [",", ".", ";", ":", "?", "!", "-", "\""];
+  for (let i = 0; i < punctuation.length; i++) {
+    if(char === punctuation[i]) {
+      return true;
+    }
+  } 
+  return false;      
 }
 
 function stripsPunctuation(word) {
@@ -31,16 +37,19 @@ function stripsPunctuation(word) {
   for (let i = 0; i < word.length; i++) {
     if (!isCharPunc(word[i])) {
       beginningIndex = i;
+      break;
     }
   }
+  foundIndex = false;
   for (let i = word.length - 1; i >= 0; i--) {
     if (!isCharPunc(word[i])) {
       endingIndex = i;
+      break;
     }
   }
   const beginningPunc = word.slice(0, beginningIndex);
   const endingPunc = word.slice(endingIndex + 1, word.length);
-  const modifiedWord = word.slice(beginningIndex, endingIndex);
+  const modifiedWord = word.slice(beginningIndex, endingIndex + 1);
   return [modifiedWord, beginningPunc, endingPunc];
 }
 
@@ -48,22 +57,22 @@ function pigLatin(word) {
   if (word === "") {
     return "";
   }
-  
-  let modifiedWord = get word without punctuation
-  if (isCharVowel(word[0])) {
-    word = word.concat("way");
-  } else if (word[0].toLowerCase() === "q") {
-      const wordRemainder = word.slice(2, word.length);
-      word = wordRemainder.concat("quay");
+  const punc = stripsPunctuation(word);
+  let modWord = punc[0];
+  if (isCharVowel(modWord[0])) {
+    modWord = modWord.concat("way");
+  } else if (modWord[0].toLowerCase() === "q") {
+      const wordRemainder = modWord.slice(2, modWord.length);
+      modWord = wordRemainder.concat("quay");
   } else {
-    const firstVowelIndex = findFirstVowelIndex(word);
+    const firstVowelIndex = findFirstVowelIndex(modWord);
     if (firstVowelIndex !== -1) {
-      const sliceToVowel = word.slice(0, firstVowelIndex);
-      const sliceFromVowel = word.slice(firstVowelIndex, word.length);
-      word = sliceFromVowel.concat(sliceToVowel + "ay");
+      const sliceToVowel = modWord.slice(0, firstVowelIndex);
+      const sliceFromVowel = modWord.slice(firstVowelIndex, modWord.length);
+      modWord = sliceFromVowel.concat(sliceToVowel + "ay");
     } else {
-      word = word.concat("ay");
+      modWord = modWord.concat("ay");
     }
   }  
-  return word;
+  return punc[1] + modWord + punc[2];
 }
