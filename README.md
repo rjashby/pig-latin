@@ -17,10 +17,6 @@
 *Code:* pigLatin("strong");
 *Expected output:* "ongstray"
 
-*Test:* "If the word begins with three consonants, it will move them all to the end and add 'ay.'
-*Code:* pigLatin("strong");
-*Expected output:* "ongstray"
-
 *Test:* "If the word begins with a 'qu', it will move both the 'q' and the 'u' to the end and add 'ay.'
 *Code:* pigLatin("quick");
 *Expected output:* "ickquay"

@@ -7,11 +7,14 @@ function isCharVowel(char) {
   }
   return false;
 }
-
+/* word must not start with a vowel */
 function findFirstVowelIndex(word) {
   const wordArray = word.split("");
   for (let i = 0; i < wordArray.length; i++) {
     if (isCharVowel(wordArray[i])) {
+      if (wordArray[i].toLowerCase() === "u" && wordArray[i - 1].toLowerCase() == "q") {
+        return i - 1;
+      }
       return i;
     }
   }
@@ -36,10 +39,3 @@ function pigLatin(word) {
   }
   return word;
 }
-
-const qCondition = "qu"
-Constant wordRemainder = word[2], word.length 
-Index of the word
-if word.splice[1] === qCondition
-  word = wordRemainder + qCondition + "ay"
- 
