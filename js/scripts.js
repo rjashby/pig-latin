@@ -21,10 +21,35 @@ function findFirstVowelIndex(word) {
   return -1;
 }
 
+isCharPunc(char) {
+
+}
+
+function stripsPunctuation(word) {
+  let beginningIndex = 0;
+  let endingIndex = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (!isCharPunc(word[i])) {
+      beginningIndex = i;
+    }
+  }
+  for (let i = word.length - 1; i >= 0; i--) {
+    if (!isCharPunc(word[i])) {
+      endingIndex = i;
+    }
+  }
+  const beginningPunc = word.slice(0, beginningIndex);
+  const endingPunc = word.slice(endingIndex + 1, word.length);
+  const modifiedWord = word.slice(beginningIndex, endingIndex);
+  return [modifiedWord, beginningPunc, endingPunc];
+}
+
 function pigLatin(word) {
   if (word === "") {
     return "";
   }
+  
+  let modifiedWord = get word without punctuation
   if (isCharVowel(word[0])) {
     word = word.concat("way");
   } else if (word[0].toLowerCase() === "q") {
@@ -39,6 +64,6 @@ function pigLatin(word) {
     } else {
       word = word.concat("ay");
     }
-  }
+  }  
   return word;
 }
