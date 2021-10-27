@@ -1,7 +1,7 @@
 function isCharVowel(char) {
   const vowels = ["a", "e", "i", "o", "u"];
   for (let i = 0; i < vowels.length; i++) {
-    if (char === vowels[i]) {
+    if (char.toLowerCase() === vowels[i]) {
       return true;
     }
   }
