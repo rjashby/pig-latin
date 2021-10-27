@@ -7,7 +7,11 @@ function pigLatin(word) {
     }
   });
   if (firstCharIsVowel) {
-    word.concat("way");
+    word = word.concat("way");
+  }
+
+  if (!(firstCharIsVowel)) {
+    word = word.concat("ay");
   }
   return word;
 }
