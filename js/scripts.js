@@ -19,24 +19,17 @@ function findFirstVowelIndex(word) {
 }
 
 function pigLatin(word) {
-  let sliceWord = ("");  
   if (isCharVowel(word[0])) {
     word = word.concat("way");
   } else {
-    sliceWord = word.slice(1);
-    word = sliceWord.concat(word.charAt(0) + "ay");
+    const firstVowelIndex = findFirstVowelIndex(word);
+    if (firstVowelIndex !== -1) {
+      const sliceToVowel = word.slice(0, firstVowelIndex);
+      const sliceFromVowel = word.slice(firstVowelIndex, word.length);
+      word = sliceFromVowel.concat(sliceToVowel + "ay");
+    } else {
+      word = word.concat("ay");
+    }
   }
   return word;
 }
-
-brat
-
-br at
-
-b r a t
-0 1 2 3
-
-find index of first vowel
-strStartingWithVowel = str.slice(i)
-strConsonants = str.slice(0, i - 1)
-word = strVowel.concat(strConson + "ay")
