@@ -76,3 +76,12 @@ function pigLatin(word) {
   }  
   return punc[1] + modWord + punc[2];
 }
+
+function fullPigLatin(text) {
+  let pigArray = text.split(" ");
+  let finalArray = [];
+  pigArray.forEach(function(word) {
+    finalArray.push(pigLatin(word));
+  })
+  return finalArray.join(" ");
+}
